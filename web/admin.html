@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>FastGov — Operações</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand"><span class="logo">◆</span> FastGov
+      <span class="sub">Operações</span></div>
+    <div class="topbar-right">
+      <span id="modo-badge" class="badge">—</span>
+      <a class="link-nav" href="/ui/">← Licitações</a>
+    </div>
+  </header>
+
+  <main class="ops-split">
+   <div class="ops-main">
+    <!-- Modo & Autenticação -->
+    <section class="op-card">
+      <h3>Modo &amp; Autenticação</h3>
+      <div class="op-row">
+        <span class="kv">Modo atual:</span> <span id="modo-txt"><b>—</b></span>
+        <button id="btn-toggle" class="btn btn-sm">Alternar</button>
+        <button id="btn-sessao" class="btn btn-sm">Testar sessão</button>
+        <button id="btn-refresh" class="btn btn-sm">Renovar token</button>
+        <span id="sessao-txt" class="kv"></span>
+      </div>
+      <div class="op-row">
+        <input id="inp-id" class="input input-sm" placeholder="Id da sessão (tokenInicial)">
+        <button id="btn-inicial" class="btn btn-sm">Semear sessão</button>
+        <span class="kv">Token store: <b id="store-em">—</b></span>
+      </div>
+    </section>
+
+    <!-- Workers & fila -->
+    <section class="op-card">
+      <h3>Workers &amp; fila</h3>
+      <div class="tiles" id="tiles"></div>
+      <div class="op-sep"></div>
+      <div class="op-row">
+        <button id="btn-rw" class="btn btn-sm">Reiniciar workers</button>
+        <button id="btn-rs" class="btn btn-sm">Reiniciar agendador</button>
+        <button id="btn-rt" class="btn btn-sm btn-danger">Reiniciar tudo</button>
+        <button id="btn-cancel-tudo" class="btn btn-sm btn-danger">Cancelar tudo</button>
+        <span class="kv">cancelar um processo: coluna “Cancelar” nas execuções (rodando = cooperativo)</span>
+      </div>
+    </section>
+
+    <!-- Serviços -->
+    <section class="op-card">
+      <h3>Serviços de background</h3>
+      <div id="servicos"></div>
+    </section>
+
+    <!-- Agendamentos -->
+    <section class="op-card">
+      <h3>Agendamentos (cron)</h3>
+      <div class="op-row">
+        <select id="ag-tarefa" class="input input-sm"></select>
+        <input id="ag-nome" class="input input-sm" placeholder="Nome">
+        <input id="ag-cron" class="input input-sm" placeholder="cron: min h dia mês dsem" value="0 6 * * *">
+        <input id="ag-params" class="input" placeholder='params JSON (ex.: {"com_itens":true})'>
+        <button id="ag-add" class="btn btn-sm btn-primary">Agendar</button>
+      </div>
+      <div class="op-sep"></div>
+      <div class="tabela-wrap"><table id="tab-ag"></table></div>
+    </section>
+
+    <!-- Execuções -->
+    <section class="op-card">
+      <h3>Execuções recentes
+        <button id="btn-exec" class="btn btn-sm" style="float:right">Executar tarefa agora</button>
+      </h3>
+      <div class="tabela-wrap"><table id="tab-exec"></table></div>
+    </section>
+   </div>
+
+   <!-- Logs (coluna direita) -->
+   <aside class="ops-logs">
+     <section class="op-card logs-card">
+       <h3>Logs <select id="log-origem" class="input input-sm" style="float:right"></select></h3>
+       <pre id="logbox"></pre>
+     </section>
+   </aside>
+  </main>
+
+  <div id="toast" class="toast hidden"></div>
+  <script src="admin.js"></script>
+</body>
+</html>

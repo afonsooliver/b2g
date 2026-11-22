@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>FastGov — Catálogos & Produtos</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand"><span class="logo">◆</span> FastGov <span class="sub">Catálogos & Produtos</span></div>
+    <nav class="topbar-right">
+      <a class="link-nav" href="/ui/">Licitações</a>
+      <a class="link-nav" href="/ui/disputa.html">Disputa</a>
+      <a class="link-nav" href="/ui/admin.html">Operações</a>
+    </nav>
+  </header>
+
+  <main class="ops">
+    <section class="op-card">
+      <h3>Catálogos técnicos</h3>
+      <div class="op-row">
+        <input id="c-nome" class="input input-sm" placeholder="Nome do catálogo">
+        <input id="c-desc" class="input" placeholder="Descrição">
+        <button id="c-add" class="btn btn-sm btn-primary">Adicionar</button>
+      </div>
+      <div class="op-sep"></div>
+      <div class="tabela-wrap"><table id="tab-cat"></table></div>
+    </section>
+
+    <section class="op-card">
+      <h3>Produtos</h3>
+      <div class="op-row">
+        <select id="f-cat" class="input input-sm"></select>
+        <input id="f-q" class="input input-sm" placeholder="Buscar produto/NCM">
+        <button id="f-buscar" class="btn btn-sm">Filtrar</button>
+        <button id="p-novo" class="btn btn-sm btn-primary" style="margin-left:auto">Novo produto</button>
+      </div>
+      <div class="op-sep"></div>
+      <div class="tabela-wrap"><table id="tab-prod"></table></div>
+    </section>
+  </main>
+
+  <!-- Modal produto -->
+  <div id="modal" class="modal hidden">
+    <div class="modal-card" style="width:min(560px,100%)">
+      <h3 id="m-titulo">Novo produto</h3>
+      <div class="op-row">
+        <input id="p-nome" class="input" placeholder="Nome" style="flex:1 1 200px">
+        <select id="p-cat" class="input input-sm"></select>
+      </div>
+      <div class="op-row">
+        <input id="p-ncm" class="input input-sm" placeholder="NCM">
+        <input id="p-custo" class="input input-sm" type="number" step="0.01" placeholder="Custo unit. R$">
+        <input id="p-customax" class="input input-sm" type="number" step="0.01" placeholder="Custo máx R$">
+        <input id="p-margem" class="input input-sm" type="number" step="0.1" placeholder="Margem mín %">
+      </div>
+      <div class="op-row">
+        <input id="p-peso" class="input input-sm" type="number" step="1" placeholder="Peso (g)">
+        <input id="p-alt" class="input input-sm" type="number" step="0.1" placeholder="Altura cm">
+        <input id="p-larg" class="input input-sm" type="number" step="0.1" placeholder="Largura cm">
+        <input id="p-comp" class="input input-sm" type="number" step="0.1" placeholder="Compr. cm">
+      </div>
+      <input id="p-desc" class="input" placeholder="Descrição">
+      <div class="op-row">
+        <input id="p-img" type="file" accept="image/*">
+        <img id="p-preview" alt="" style="height:48px;border-radius:6px;display:none">
+      </div>
+      <div class="modal-actions">
+        <button id="m-cancelar" class="btn btn-ghost">Cancelar</button>
+        <button id="m-salvar" class="btn btn-primary">Salvar</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="toast" class="toast hidden"></div>
+  <script src="produtos.js"></script>
+</body>
+</html>

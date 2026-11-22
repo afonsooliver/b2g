@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>FastGov — Licitações</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand"><span class="logo">◆</span> FastGov
+      <span class="sub">Automação de licitações</span></div>
+    <div class="topbar-right">
+      <span id="modo-badge" class="badge" title="Modo do autenticador"></span>
+      <a class="link-nav" href="/ui/produtos.html">Produtos</a>
+      <a class="link-nav" href="/ui/disputa.html">Disputa</a>
+      <a class="link-nav" href="/ui/admin.html">Operações</a>
+      <button id="btn-ingest" class="btn btn-primary">Ingerir PNCP</button>
+    </div>
+  </header>
+
+  <!-- Etapas: navegação SUPERIOR -->
+  <nav id="etapa-tabs" class="etapas"></nav>
+
+  <section class="workspace">
+    <div class="toolbar">
+      <select id="f-situacao" class="input input-sit" title="Situação dos itens">
+        <option value="ativos">Ativos</option>
+        <option value="inativos">Inativos</option>
+        <option value="todos">Todos</option>
+      </select>
+      <input id="f-q" class="input" type="search" placeholder="Buscar item / edital…">
+      <input id="f-uf" class="input input-uf" maxlength="2" placeholder="UF" style="text-transform:uppercase">
+      <input id="f-modalidade" class="input input-mod" placeholder="Modal.">
+      <button id="btn-buscar" class="btn btn-ghost">Filtrar</button>
+      <span id="info" class="muted"></span>
+    </div>
+
+    <div class="split">
+      <!-- Painel lateral: editais filtrados pela etapa (paginado) -->
+      <aside class="lateral">
+        <div id="edital-list" class="edital-list"></div>
+        <div id="ed-pager" class="pager"></div>
+      </aside>
+      <!-- Detalhe: itens apenas do edital selecionado -->
+      <section id="detalhe" class="detalhe">
+        <div class="placeholder muted">Selecione um edital à esquerda.</div>
+      </section>
+    </div>
+  </section>
+
+  <!-- Modal de ingestão -->
+  <div id="modal" class="modal hidden">
+    <div class="modal-card">
+      <h3>Ingerir compras do PNCP</h3>
+      <label>Publicadas a partir de <input id="ing-data" class="input" type="date"></label>
+      <label>Modalidades (vírgula) <input id="ing-modalidades" class="input" placeholder="ex.: 4,8,9,1,6"></label>
+      <label class="chk"><input type="checkbox" id="ing-itens" checked> baixar itens básicos</label>
+      <div class="modal-actions">
+        <button id="ing-cancelar" class="btn btn-ghost">Cancelar</button>
+        <button id="ing-confirmar" class="btn btn-primary">Ingerir</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="toast" class="toast hidden"></div>
+  <script src="app.js"></script>
+</body>
+</html>

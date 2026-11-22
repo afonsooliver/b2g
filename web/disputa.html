@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>FastGov — Sala de Disputa</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand"><span class="logo">◆</span> FastGov <span class="sub">Sala de Disputa</span></div>
+    <nav class="topbar-right">
+      <span id="ws-badge" class="badge">WS —</span>
+      <button id="ws-toggle" class="btn btn-sm">—</button>
+      <a class="link-nav" href="/ui/">Licitações</a>
+      <a class="link-nav" href="/ui/produtos.html">Produtos</a>
+      <a class="link-nav" href="/ui/admin.html">Operações</a>
+    </nav>
+  </header>
+
+  <main class="ops">
+    <section class="op-card">
+      <h3>Itens em disputa / homologação <span id="info" class="kv" style="float:right"></span></h3>
+      <p class="kv">Os lances são enviados <b>automaticamente pelo WebSocket</b> quando o item
+        está perdendo e o auto-lance está ligado (respeitando o lance mínimo).</p>
+      <div class="tabela-wrap"><table id="tab"></table></div>
+    </section>
+  </main>
+
+  <div id="toast" class="toast hidden"></div>
+  <script src="disputa.js"></script>
+</body>
+</html>
